@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Selamat Hari Raya Idul Fitri 1447H</title>
+    <meta name="description" content="Taqabbalallahu Minna Wa Minkum. Mohon maaf lahir dan batin atas segala khilaf dan salah." />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet">
+
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #010a08;
+            color: white;
+            height: 100dvh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .noise-bg {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            background-size: 200px 200px;
+        }
+
+        .bg-shapes {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+        }
+
+        .shape1, .shape2 {
+            position: absolute;
+            border-radius: 40%;
+            transform: rotate(45deg);
+        }
+
+        .shape1 {
+            width: min(150vw, 700px);
+            height: min(150vw, 700px);
+            background: radial-gradient(ellipse at center, #064e3b 0%, transparent 70%);
+            opacity: 0.3;
+            animation: rotateSlow 20s linear infinite;
+        }
+
+        .shape2 {
+            width: min(100vw, 500px);
+            height: min(100vw, 500px);
+            background: radial-gradient(ellipse at center, #065f46 0%, transparent 70%);
+            opacity: 0.2;
+            filter: blur(20px);
+            animation: rotateSlow 30s linear infinite reverse;
+        }
+
+        @keyframes rotateSlow {
+            from { transform: rotate(45deg); }
+            to { transform: rotate(405deg); }
+        }
+
+        #particles {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .flash-overlay {
+            position: fixed;
+            inset: 0;
+            background: white;
+            z-index: 200;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #fde047, #f59e0b, #fde047);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        #cover {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            z-index: 30;
+            background: rgba(1, 10, 8, 0.90);
+            backdrop-filter: blur(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        #cover.hidden {
+            opacity: 0;
+            pointer-events: none;
+            transform: scale(1.05);
+        }
+
+        .cover-title {
+            text-align: center;
+            margin-bottom: 4rem;
+            pointer-events: none;
+        }
+
+        .cover-title h2 {
+            font-size: 0.75rem;
+            font-weight: 300;
+            margin-bottom: 0.5rem;
+            color: #34d399;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+        }
+
+        .cover-title h1 {
+            font-size: clamp(2rem, 8vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+
+        .cover-title h3 {
+            font-size: 1.25rem;
+            font-weight: 300;
+            color: rgba(167, 243, 208, 0.8);
+            letter-spacing: 0.5em;
+        }
+
+        #openBtn {
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 20;
+        }
+
+        .ketupat-wrapper {
+            width: clamp(8rem, 20vw, 10rem);
+            height: clamp(8rem, 20vw, 10rem);
+            margin-bottom: 2.5rem;
+            filter: drop-shadow(0 0 20px rgba(253,224,71,0.2));
+            transition: filter 0.3s ease;
+        }
+
+        #openBtn:hover .ketupat-wrapper {
+            filter: drop-shadow(0 0 40px rgba(253,224,71,0.6));
+        }
+
+        .ketupat-wrapper svg {
+            width: 100%;
+            height: 100%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.85; }
+        }
+
+        .open-btn-label {
+            padding: 0.75rem 2rem;
+            border-radius: 9999px;
+            border: 1px solid rgba(234,179,8,0.4);
+            background: rgba(6,46,34,0.6);
+            backdrop-filter: blur(8px);
+            transition: background 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        #openBtn:hover .open-btn-label {
+            background: rgba(6,78,59,0.8);
+            box-shadow: 0 0 20px rgba(253,224,71,0.3);
+        }
+
+        .open-btn-label span {
+            color: #fde047;
+            font-size: 0.875rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        #content-wrapper {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            z-index: 20;
+            width: 100%;
+            max-width: 32rem;
+            margin: 0 auto;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.8s ease;
+        }
+
+        #content-wrapper.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .glass-card {
+            background: linear-gradient(135deg, rgba(6,46,34,0.7), rgba(1,10,8,0.8));
+            border: 1px solid rgba(253,224,71,0.15);
+            border-radius: 1.5rem;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 0 60px rgba(253,224,71,0.05), inset 0 1px 0 rgba(255,255,255,0.05);
+            width: 100%;
+            max-height: 90vh;
+            padding: clamp(1.5rem, 5vw, 2.5rem);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow-y: auto;
+        }
+
+        .glass-card::-webkit-scrollbar { width: 4px; }
+        .glass-card::-webkit-scrollbar-track { background: transparent; }
+        .glass-card::-webkit-scrollbar-thumb { background: rgba(253,224,71,0.2); border-radius: 2px; }
+
+        .card-glow-tl {
+            position: absolute;
+            top: 0; left: 0;
+            width: 6rem; height: 6rem;
+            background: rgba(234,179,8,0.2);
+            border-radius: 0 0 100% 0;
+            filter: blur(20px);
+        }
+
+        .card-glow-br {
+            position: absolute;
+            bottom: 0; right: 0;
+            width: 8rem; height: 8rem;
+            background: rgba(52,211,153,0.2);
+            border-radius: 100% 0 0 0;
+            filter: blur(20px);
+        }
+
+        .card-inner {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            z-index: 10;
+        }
+
+        .recipient-block { width: 100%; text-align: left; }
+
+        .label-text {
+            font-size: 0.65rem;
+            color: #34d399;
+            margin-bottom: 0.25rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+        }
+
+        #recipientName {
+            font-size: clamp(1.1rem, 4vw, 1.5rem);
+            font-weight: 700;
+            text-transform: capitalize;
+            line-height: 1.3;
+        }
+
+        .arabic-block {
+            font-family: 'Amiri', serif;
+            font-size: clamp(2rem, 8vw, 3.5rem);
+            color: #fde047;
+            text-align: center;
+            line-height: 1.8;
+            filter: drop-shadow(0 0 15px rgba(253,224,71,0.4));
+            padding: 1.5rem 0;
+            animation: glowPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes glowPulse {
+            0%, 100% { filter: drop-shadow(0 0 10px rgba(253,224,71,0.3)); }
+            50% { filter: drop-shadow(0 0 25px rgba(253,224,71,0.6)); }
+        }
+
+        .message-block {
+            width: 100%;
+            padding-left: 1rem;
+            border-left: 2px solid rgba(253,224,71,0.3);
+            position: relative;
+        }
+
+        .dot-top, .dot-bottom {
+            position: absolute;
+            left: -5px;
+            width: 8px; height: 8px;
+            border-radius: 50%;
+        }
+
+        .dot-top {
+            top: 0;
+            background: #fde047;
+            box-shadow: 0 0 10px rgba(253,224,71,1);
+        }
+
+        .dot-bottom {
+            bottom: 0;
+            background: #34d399;
+            box-shadow: 0 0 10px rgba(52,211,153,1);
+        }
+
+        .message-block h2 {
+            font-size: clamp(0.9rem, 3vw, 1.1rem);
+            font-weight: 700;
+            color: #ecfdf5;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.75rem;
+        }
+
+        .message-block p {
+            font-size: clamp(0.8rem, 2.5vw, 0.95rem);
+            color: rgba(209,250,229,0.7);
+            line-height: 1.8;
+            font-weight: 300;
+            text-align: justify;
+        }
+
+        .sender-block { width: 100%; text-align: right; margin-top: 0.5rem; }
+
+        #senderName {
+            font-size: clamp(1.1rem, 4vw, 1.5rem);
+            font-weight: 700;
+            color: #ecfdf5;
+            text-transform: capitalize;
+        }
+
+        @keyframes popIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card-inner > * {
+            opacity: 0;
+        }
+
+        .card-inner.animate > *:nth-child(1) { animation: popIn 0.6s ease 0.2s forwards; }
+        .card-inner.animate > *:nth-child(2) { animation: popIn 0.6s ease 0.4s forwards; }
+        .card-inner.animate > *:nth-child(3) { animation: popIn 0.6s ease 0.5s forwards; }
+        .card-inner.animate > *:nth-child(4) { animation: popIn 0.6s ease 0.6s forwards; }
+        .card-inner.animate > *:nth-child(5) { animation: popIn 0.6s ease 0.8s forwards; }
+
+        /* Photo circle */
+        .photo-block {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .photo-circle {
+            width: clamp(7rem, 25vw, 10rem);
+            height: clamp(7rem, 25vw, 10rem);
+            border-radius: 50%;
+            border: 2px solid rgba(253,224,71,0.4);
+            box-shadow: 0 0 20px rgba(253,224,71,0.15), 0 0 0 4px rgba(253,224,71,0.05);
+            overflow: hidden;
+            background: rgba(6,46,34,0.5);
+            position: relative;
+            cursor: pointer;
+            transition: box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .photo-circle:hover {
+            border-color: rgba(253,224,71,0.8);
+            box-shadow: 0 0 30px rgba(253,224,71,0.3), 0 0 0 4px rgba(253,224,71,0.1);
+        }
+
+        .photo-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none;
+        }
+
+        .photo-circle img.loaded { display: block; }
+
+        .photo-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+            color: rgba(253,224,71,0.4);
+            font-size: 0.65rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .photo-placeholder svg {
+            width: 2rem;
+            height: 2rem;
+            opacity: 0.5;
+        }
+
+        .photo-placeholder.hidden { display: none; }
+
+        #photoInput { display: none; }
+
+        /* Hide upload hint for recipients */
+        .photo-upload-hint {
+            font-size: 0.65rem;
+            color: rgba(52,211,153,0.4);
+            letter-spacing: 0.1em;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <audio id="takbiran_sound" preload="auto">
+        <source src="mp3/takbiran.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="noise-bg"></div>
+
+    <div class="bg-shapes">
+        <div class="shape1"></div>
+        <div class="shape2"></div>
+        <canvas id="particles"></canvas>
+    </div>
+
+    <div id="whiteFlash" class="flash-overlay"></div>
+
+    <!-- Setup Modal (hanya muncul untuk pengirim) -->
+    <div id="setupModal" style="display:none; position:fixed; inset:0; z-index:500; align-items:center; justify-content:center; background:rgba(1,10,8,0.95); backdrop-filter:blur(20px); padding:1.5rem;">
+        <div style="background:linear-gradient(135deg,#03241b,#010a08); border:1px solid rgba(253,224,71,0.2); border-radius:1.5rem; padding:2.5rem; width:100%; max-width:22rem; box-shadow:0 0 50px rgba(253,224,71,0.08);">
+            <div style="text-align:center; margin-bottom:2rem;">
+                <p style="font-size:0.7rem; color:#34d399; letter-spacing:0.3em; text-transform:uppercase; margin-bottom:0.5rem;">Personalisasi Kartu</p>
+                <h2 style="font-family:'Amiri',serif; font-size:1.8rem; background:linear-gradient(135deg,#fde047,#f59e0b,#fde047); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;">Buat Kartu Kamu</h2>
+            </div>
+
+            <div style="margin-bottom:1.5rem;">
+                <label style="display:block; font-size:0.7rem; color:#34d399; letter-spacing:0.2em; text-transform:uppercase; margin-bottom:0.5rem;">Nama Pengirim (Dari)</label>
+                <input id="inputDari" type="text" autocapitalize="words" placeholder="Contoh: Wafa Rifqi"
+                    style="width:100%; background:rgba(6,46,34,0.4); border:1px solid rgba(253,224,71,0.2); border-radius:0.75rem; padding:0.75rem 1rem; color:white; font-family:'Poppins',sans-serif; font-size:0.9rem; outline:none; transition:border 0.3s;"
+                    onfocus="this.style.borderColor='rgba(253,224,71,0.6)'" onblur="this.style.borderColor='rgba(253,224,71,0.2)'">
+            </div>
+
+            <div style="margin-bottom:0.75rem;">
+                <label style="display:block; font-size:0.7rem; color:#34d399; letter-spacing:0.2em; text-transform:uppercase; margin-bottom:0.5rem;">Nama Penerima (Kepada)</label>
+                <input id="inputKepada" type="text" autocapitalize="words" placeholder="Contoh: Keluarga & Sahabat"
+                    style="width:100%; background:rgba(6,46,34,0.4); border:1px solid rgba(253,224,71,0.2); border-radius:0.75rem; padding:0.75rem 1rem; color:white; font-family:'Poppins',sans-serif; font-size:0.9rem; outline:none; transition:border 0.3s;"
+                    onfocus="this.style.borderColor='rgba(253,224,71,0.6)'" onblur="this.style.borderColor='rgba(253,224,71,0.2)'">
+            </div>
+
+            <p id="setupError" style="display:none; font-size:0.75rem; color:#f87171; margin-bottom:0.75rem; text-align:center;">Mohon isi kedua nama terlebih dahulu.</p>
+
+            <button id="setupBtn"
+                style="width:100%; margin-top:1rem; padding:0.875rem; border-radius:0.875rem; background:linear-gradient(to right,#ca8a04,#fde047); color:#000; font-family:'Poppins',sans-serif; font-weight:700; font-size:0.85rem; letter-spacing:0.15em; text-transform:uppercase; border:none; cursor:pointer; transition:box-shadow 0.3s, transform 0.1s;"
+                onmouseover="this.style.boxShadow='0 0 20px rgba(253,224,71,0.5)'" onmouseout="this.style.boxShadow='none'"
+                onmousedown="this.style.transform='scale(0.97)'" onmouseup="this.style.transform='scale(1)'">
+                Buat &amp; Lihat Kartu →
+            </button>
+
+            <p style="text-align:center; font-size:0.7rem; color:rgba(52,211,153,0.5); margin-top:1.25rem; line-height:1.6;">Link yang dihasilkan bisa langsung<br>dikirim ke penerima.</p>
+        </div>
+    </div>
+
+    <div id="cover">
+        <div class="cover-title">
+            <h2>Selamat Hari Raya</h2>
+            <h1 class="gold-gradient-text">Idul Fitri</h1>
+            <h3>1447 H</h3>
+        </div>
+
+        <div id="openBtn">
+            <div class="ketupat-wrapper">
+                <svg viewBox="0 0 100 100">
+                    <rect x="20" y="20" width="60" height="60" transform="rotate(45 50 50)" fill="#064e3b" stroke="#fde047" stroke-width="2.5"/>
+                    <path d="M50 8 L50 92 M8 50 L92 50 M30 30 L70 70 M30 70 L70 30" stroke="#fde047" stroke-width="1.5" opacity="0.8"/>
+                    <circle cx="50" cy="50" r="15" fill="#022c22" stroke="#fde047" stroke-width="2"/>
+                    <circle cx="50" cy="50" r="6" fill="#fde047"/>
+                </svg>
+            </div>
+            <div class="open-btn-label">
+                <span>Buka Pesan</span>
+            </div>
+        </div>
+    </div>
+
+    <div id="content-wrapper">
+        <div class="glass-card">
+            <div class="card-glow-tl"></div>
+            <div class="card-glow-br"></div>
+
+            <div class="card-inner" id="cardInner">
+                <div class="recipient-block">
+                    <p class="label-text">Kepada:</p>
+                    <h3 id="recipientName" class="gold-gradient-text">Keluarga &amp; Sahabat</h3>
+                </div>
+
+                <div class="arabic-block">
+                    تَقَبَّلَ اللَّهُ مِنَّا وَمِنْكُمْ
+                </div>
+
+
+                <div class="photo-block" id="photoBlock">
+                    <div class="photo-circle">
+                        <img src="foto/slamsmart.jpg" alt="Foto Keluarga" class="loaded">
+                    </div>
+                </div>
+
+                <div class="message-block">
+                    <div class="dot-top"></div>
+                    <div class="dot-bottom"></div>
+                    <h2>Selamat Hari Raya Idul Fitri 1447 H</h2>
+                    <p>
+                        Di hari yang kembali fitri, semoga hati kembali bersih, langkah kembali ringan, dan hubungan kembali hangat.
+                        Mohon maaf lahir dan batin atas segala khilaf dan salah. 🌙✨
+                    </p>
+                </div>
+
+                <div class="sender-block">
+                    <p class="label-text">Salam Hangat,</p>
+                    <h3 id="senderName">Hamba Allah</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // URL params
+        const params = new URLSearchParams(window.location.search);
+        const dari = params.get('dari');
+        const kepada = params.get('kepada');
+
+        // Jika tidak ada params → tampilkan setup modal (mode pengirim)
+        if (!dari && !kepada) {
+            document.getElementById('setupModal').style.display = 'flex';
+        } else {
+            // Mode penerima → langsung isi nama
+            if (dari) document.getElementById('senderName').textContent = dari;
+            if (kepada) document.getElementById('recipientName').textContent = kepada;
+        }
+
+        // Tombol buat kartu
+        document.getElementById('setupBtn').addEventListener('click', function () {
+            const namaDari = document.getElementById('inputDari').value.trim();
+            const namaKepada = document.getElementById('inputKepada').value.trim();
+            if (!namaDari || !namaKepada) {
+                document.getElementById('setupError').style.display = 'block';
+                return;
+            }
+            const url = `${window.location.pathname}?dari=${encodeURIComponent(namaDari)}&kepada=${encodeURIComponent(namaKepada)}`;
+            window.location.href = url;
+        });
+
+
+        // Particles
+        const canvas = document.getElementById('particles');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        function createParticle() {
+            return {
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                size: Math.random() * 2 + 0.5,
+                speedX: (Math.random() - 0.5) * 0.4,
+                speedY: -Math.random() * 0.6 - 0.2,
+                opacity: Math.random() * 0.6 + 0.1,
+                color: Math.random() > 0.5 ? '253,224,71' : '52,211,153'
+            };
+        }
+
+        for (let i = 0; i < 80; i++) particles.push(createParticle());
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach((p, i) => {
+                p.x += p.speedX;
+                p.y += p.speedY;
+                p.opacity -= 0.001;
+                if (p.y < -10 || p.opacity <= 0) particles[i] = createParticle();
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(${p.color},${p.opacity})`;
+                ctx.fill();
+            });
+            requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
+
+        // Open button click
+        document.getElementById('openBtn').addEventListener('click', function () {
+            // Flash
+            const flash = document.getElementById('whiteFlash');
+            flash.style.opacity = '0.6';
+            setTimeout(() => { flash.style.opacity = '0'; }, 300);
+
+            // Audio
+            const audio = document.getElementById('takbiran_sound');
+            audio.play().catch(() => {});
+
+            // Transition
+            const cover = document.getElementById('cover');
+            const content = document.getElementById('content-wrapper');
+            const cardInner = document.getElementById('cardInner');
+
+            cover.classList.add('hidden');
+            setTimeout(() => {
+                cover.style.display = 'none';
+                content.classList.add('visible');
+                cardInner.classList.add('animate');
+            }, 800);
+        });
+    </script>
+</body>
+</html>
